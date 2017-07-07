@@ -11,17 +11,22 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.makarios.app.makarios.R;
+import com.makarios.app.makarios.database.DatabaseManager;
 import com.makarios.app.makarios.models.MyCollections;
 
 import java.util.Collections;
 import java.util.List;
 
 
-public class CollectionsAdapter extends RecyclerView.Adapter {
+public class CollectionsAdapter extends RecyclerView.Adapter<CollectionsAdapter.CollectionsViewHolder> {
+    private final FragmentActivity activity;
     private Context context;
+    private List<MyCollections> myCollections;
 
     public CollectionsAdapter(Context context, List<MyCollections> myCollectionsList, FragmentActivity activity) {
         this.context = context;
+        this.myCollections = myCollectionsList;
+        this.activity = activity;
     }
 
     @Override
@@ -35,15 +40,18 @@ public class CollectionsAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(final CollectionsViewHolder holder, int position) {
-//        Glide.with(context)
-//                .load("")
-//                .into(holder.collectionImage);
+        MyCollections collections = myCollections.get(position);
+        Glide.with(context)
+                .load("")
+                .into(holder.collectionImage);
 
+        holder.collectionStyle.setText("style");
+        holder.collectionName.setText("name");
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return myCollections.size();
     }
 
     public static class CollectionsViewHolder extends RecyclerView.ViewHolder {

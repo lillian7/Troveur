@@ -5,13 +5,13 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.makarios.app.makarios.fragments.PageFragment;
+import com.makarios.app.makarios.fragments.CollectionsFragment;
 
 
 public class TabFragmentPagerAdapter extends FragmentPagerAdapter {
     private Context context;
-    final int PAGE_COUNT = 3;
-    private String tabTitles[] = new String[] { "Tab1", "Tab2", "Tab3" };
+    private final int PAGE_COUNT = 3;
+    private String tabTitles[] = new String[] { "Collections", "ClientList", "Team" };
 
     public TabFragmentPagerAdapter(FragmentManager fm, Context context) {
         super(fm);
@@ -22,7 +22,7 @@ public class TabFragmentPagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                return PageFragment.newInstance(position + 1);
+                return CollectionsFragment.newInstance(position + 1);
             case 1:
                 return new Fragment();
             case 2:

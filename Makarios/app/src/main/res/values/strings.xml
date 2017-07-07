@@ -12,5 +12,5 @@
     <string name="communicate">Communicate</string>
     <string name="share">Share</string>
     <string name="send">Send</string>
-    <string name="default_text_main">Browse to see Makarios collections</string>
+    <string name="default_text_main">No collection yet, Swipe down to reload collections</string>
 </resources>
