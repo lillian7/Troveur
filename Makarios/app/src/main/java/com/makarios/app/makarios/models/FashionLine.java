@@ -9,11 +9,15 @@ public class FashionLine extends Base {
     public static final String TABLE_NAME_FASHION_LINE = "fashionLine";
     @DatabaseField
     private String gender;
+
     @DatabaseField
     private String designer;
     @DatabaseField
     private Double pricePoint;
-    private MyCollections mycollections;
+    private MyCollection mycollections;
+
+    public FashionLine() {
+    }
 
 
     public FashionLine(String gender, String designer, Double pricePoint) {
@@ -46,11 +50,11 @@ public class FashionLine extends Base {
         this.pricePoint = pricePoint;
     }
 
-    public MyCollections getMycollections() {
+    public MyCollection getMycollections() {
         return mycollections;
     }
 
-    public void setMycollections(MyCollections mycollections) {
+    public void setMycollections(MyCollection mycollections) {
         this.mycollections = mycollections;
     }
 }

@@ -3,6 +3,7 @@
     package="com.makarios.app.makarios">
 
     <application
+        android:name=".utilities.Makarios"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -19,6 +20,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activities.CreateCollectionActivity"
+            android:label="@string/title_new_collections"
+            />
     </application>
-
 </manifest>

@@ -3,8 +3,8 @@ package com.makarios.app.makarios.models;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
-@DatabaseTable(tableName = MyCollections.TABLE_NAME_COLLECTIONS)
-public class MyCollections extends Base{
+@DatabaseTable(tableName = MyCollection.TABLE_NAME_COLLECTIONS)
+public class MyCollection extends Base{
 
     public static final String TABLE_NAME_COLLECTIONS = "collections";
     @DatabaseField
@@ -17,11 +17,13 @@ public class MyCollections extends Base{
     private int fashionLineId;
 
 
-    MyCollections(String lifeStyle, String name, String season, int fashionLineId) {
+    public MyCollection(String lifeStyle, String name, String season) {
         this.lifeStyle = lifeStyle;
         this.name = name;
         this.season = season;
-        this.fashionLineId = fashionLineId;
+    }
+
+    public MyCollection() {
     }
 
     public String getSeason() {

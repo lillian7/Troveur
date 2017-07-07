@@ -14,10 +14,10 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
 import com.makarios.app.makarios.R;
-import com.makarios.app.makarios.TouchListener;
+import com.makarios.app.makarios.utilities.TouchListener;
 import com.makarios.app.makarios.adapters.CollectionsAdapter;
 import com.makarios.app.makarios.database.DatabaseManager;
-import com.makarios.app.makarios.models.MyCollections;
+import com.makarios.app.makarios.models.MyCollection;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +27,7 @@ public class CollectionsFragment extends Fragment {
     private static final String ARG_PAGE = "PAGE";
     private int mPage;
     private RecyclerView recyclerView;
-    private List<MyCollections> myCollectionsList = new ArrayList<>();
+    private List<MyCollection> myCollectionList = new ArrayList<>();
     private CollectionsAdapter collectiosAdapter;
     private RelativeLayout emptyListLayout;
     private SwipeRefreshLayout swipeRefreshLayout;
@@ -63,7 +63,7 @@ public class CollectionsFragment extends Fragment {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setHasFixedSize(true);
 
-        collectiosAdapter = new CollectionsAdapter(getContext(), myCollectionsList, getActivity());
+        collectiosAdapter = new CollectionsAdapter(getContext(), myCollectionList, getActivity());
         recyclerView.setAdapter(collectiosAdapter);
         recyclerView.addOnItemTouchListener(new TouchListener(getContext(), recyclerView, new TouchListener.ClickListener() {
             @Override
@@ -84,7 +84,7 @@ public class CollectionsFragment extends Fragment {
         return rootView;
     }
 
-    private class GetCollectionsTask extends AsyncTask<Void, Void, List<MyCollections>> {
+    private class GetCollectionsTask extends AsyncTask<Void, Void, List<MyCollection>> {
         public GetCollectionsTask() {}
 
         @Override
@@ -93,7 +93,7 @@ public class CollectionsFragment extends Fragment {
         }
 
         @Override
-        protected void onPostExecute(List<MyCollections> collections) {
+        protected void onPostExecute(List<MyCollection> collections) {
             super.onPostExecute(collections);
             if(collections.size() == 0){
                 recyclerView.setVisibility(View.INVISIBLE);
@@ -102,13 +102,13 @@ public class CollectionsFragment extends Fragment {
                 recyclerView.setVisibility(View.VISIBLE);
                 emptyListLayout.setVisibility(View.INVISIBLE);
             }
-            myCollectionsList.addAll(collections);
+            myCollectionList.addAll(collections);
             collectiosAdapter.notifyDataSetChanged();
             swipeRefreshLayout.setRefreshing(false);
         }
 
         @Override
-        protected List<MyCollections> doInBackground(Void... params) {
+        protected List<MyCollection> doInBackground(Void... params) {
             return DatabaseManager.getInstance().getCollections();
         }
 

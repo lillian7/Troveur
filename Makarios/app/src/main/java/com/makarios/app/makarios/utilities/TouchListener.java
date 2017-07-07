@@ -1,4 +1,4 @@
-package com.makarios.app.makarios;
+package com.makarios.app.makarios.utilities;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
